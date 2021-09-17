@@ -1,0 +1,55 @@
+{% extends 'web/base.html' %}
+{% block content %}
+
+{#    <div class="d-flex justify-content-center">#}
+
+    <div class="container" style="margin-top: 100px;">
+ <h1> Cocktails </h1>
+    <br>
+    <br>
+        <div class="row">
+
+    {% for cocktail in object_list.cocktails %}
+
+        <div class="col-md-6">
+
+            <div class="card" style="width: 18rem;">
+              <img src="{{ cocktail.image.url }}" class="card-img-top" alt="..." style="object-fit: cover;">
+              <div class="card-body">
+
+                  <p class="card-text font-weight-bold text-monospace">{{ cocktail.name  }}</p>
+                <p class="card-text font-weight-lighter">{{ cocktail.ingredients  }}</p>
+                  <p class="card-text font-weight-normal">{{ cocktail.sale_price  }} Euro(s)</p>
+              </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+        </div>
+    </div>
+    <div class="container" style="margin-top: 100px;">
+     <h1> Mocktails </h1>
+    <br><br>
+        <div class="row">
+
+    {% for mocktail in object_list.mocktails %}
+
+        <div class="col-md-6">
+            <div class="card" style="width: 18rem;">
+                <div class="container"></div>
+              <img src="{{ mocktail.image.url }}" class="card-img-top" alt="..." >
+              <div class="card-body">
+                   <p class="card-text font-weight-bold text-monospace">{{ mocktail.name  }}</p>
+                <p class="card-text font-weight-lighter">{{  mocktail.ingredients }}</p>
+                  <p class="card-text font-weight-normal">{{ mocktail.sale_price  }} Euro(s)</p>
+              </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
