@@ -38,3 +38,5 @@ class Cocktail(admin.ModelAdmin):
 @admin.register(Shisha)
 class Shisha(admin.ModelAdmin):
     """"""
+
+admin.site.site_header = "Waldhaus Backend Tool"
