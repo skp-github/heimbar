@@ -50,7 +50,7 @@ class SalesOverviewListView(ListView):
         for mocktail in mocktails:
             total_drink_served = 0
             for oo in OrderItem.objects.filter(mocktail=mocktail):
-                total_drink_served += oo.mocktail
+                total_drink_served += oo.mocktail_quantity
             drink_count[mocktail.name] = total_drink_served
             qs['total_drinks_served'] += total_drink_served
 
