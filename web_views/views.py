@@ -34,12 +34,24 @@ class SalesOverviewListView(ListView):
         cocktails = Cocktail.objects.all()
         mocktails = Mocktail.objects.all()
         drink_count = {}
+        qs['total_drinks_served'] = 0
         for drink in drinks:
-            drink_count[drink.drink_name] = OrderItem.objects.filter(drink=drink).count()
-        # for cocktail in cocktails:
-        #     drink_count[cocktail.name] = OrderItem.objects.filter(cocktail=cocktail).count()
-        # for mocktail in mocktails:
-        #     drink_count[mocktail.name] = OrderItem.objects.filter(mocktail=mocktail).count()
-        qs['drinks_sale_count'] = drink_count
+            total_drink_served  = 0
+            for oo in OrderItem.objects.filter(drink=drink):
+                total_drink_served += oo.drink_quantity
+            drink_count[drink.drink_name] = total_drink_served
+            qs['total_drinks_served'] += total_drink_served
+        for cocktail in cocktails:
+            total_drink_served = 0
+            for oo in OrderItem.objects.filter(cocktail=cocktail):
+                total_drink_served += oo.cocktail_quantity
+            drink_count[cocktail.name] = total_drink_served
+            qs['total_drinks_served'] += total_drink_served
+        for mocktail in mocktails:
+            total_drink_served = 0
+            for oo in OrderItem.objects.filter(mocktail=mocktail):
+                total_drink_served += oo.mocktail
+            drink_count[mocktail.name] = total_drink_served
+            qs['total_drinks_served'] += total_drink_served
 
         return qs
