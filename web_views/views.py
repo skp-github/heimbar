@@ -53,5 +53,5 @@ class SalesOverviewListView(ListView):
                 total_drink_served += oo.mocktail_quantity
             drink_count[mocktail.name] = total_drink_served
             qs['total_drinks_served'] += total_drink_served
-
+        qs['drinks_count'] = drink_count
         return qs
