@@ -34,12 +34,12 @@ class SalesOverviewListView(ListView):
         cocktails = Cocktail.objects.all()
         mocktails = Mocktail.objects.all()
         drink_count = {}
-        # for drink in drinks:
-        #     drink_count[drink.drink_name] = OrderItem.objects.filter(drink=drink).count()
+        for drink in drinks:
+            drink_count[drink.drink_name] = OrderItem.objects.filter(drink=drink).count()
         # for cocktail in cocktails:
         #     drink_count[cocktail.name] = OrderItem.objects.filter(cocktail=cocktail).count()
         # for mocktail in mocktails:
         #     drink_count[mocktail.name] = OrderItem.objects.filter(mocktail=mocktail).count()
-        # qs['drinks_sale_count'] =  drink_count
+        qs['drinks_sale_count'] = drink_count
 
         return qs
