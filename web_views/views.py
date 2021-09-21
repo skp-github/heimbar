@@ -4,6 +4,8 @@ from inventory.models import Cocktail, Mocktail, Drink
 from orders.models import Order, OrderItem
 from datetime import date
 
+
+
 # Create your views here.
 class SpecialsListView(ListView):
     template_name = 'web/special/specials_list.html'
