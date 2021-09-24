@@ -14,3 +14,8 @@ class OrderAdminInline(admin.ModelAdmin):
 
     inlines = (OrderItemAdminInline,)
 
+@admin.register(OrderItem)
+class OrderItemAdmin(admin.ModelAdmin):
+    """
+
+    """

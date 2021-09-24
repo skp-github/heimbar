@@ -5,6 +5,8 @@ from django.utils.timezone import now
 class Order(models.Model):
     created_date = models.DateTimeField('date_created', default=now)
     total_price = models.DecimalField(max_digits=7, decimal_places=2)
+    def __str__(self):
+        return "Order No: " + str(self.id)
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.PROTECT)
