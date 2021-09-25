@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from inventory.models import Cocktail, Mocktail, Drink
 from orders.models import Order, OrderItem
-from datetime import date
+from datetime import date, datetime, timedelta
 
 
 
@@ -26,7 +26,8 @@ class SalesOverviewListView(ListView):
 
     def get_queryset(self):
         qs = {}
-        orders = Order.objects.all()
+        timediff = datetime.now() - timedelta(hours=48)
+        orders = Order.objects.filter(created_date__gte=timediff)
         total_sales = 0
         qs['number_of_orders'] = len(orders)
         for order_loop in orders:
