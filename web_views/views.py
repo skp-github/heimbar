@@ -34,8 +34,8 @@ class SalesOverviewListView(ListView):
             total_sales += order_loop.total_price
         qs['total_sales'] = total_sales
         drinks = Drink.objects.all()
-        cocktails = Cocktail.objects.all()
-        mocktails = Mocktail.objects.all()
+        cocktails = Cocktail.objects.all(created_date__gte=timediff)
+        mocktails = Mocktail.objects.all(created_date__gte=timediff)
         drink_count = {}
         qs['total_drinks_served'] = 0
         for drink in drinks:
